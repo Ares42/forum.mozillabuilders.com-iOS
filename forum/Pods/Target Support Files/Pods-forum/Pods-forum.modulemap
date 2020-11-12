@@ -1,0 +1,6 @@
+framework module Pods_forum {
+  umbrella header "Pods-forum-umbrella.h"
+
+  export *
+  module * { export * }
+}
