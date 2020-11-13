@@ -22,10 +22,12 @@
 		D558D195255DEDF200B0B0BD /* NetworkHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558D194255DEDF200B0B0BD /* NetworkHandler.swift */; };
 		D558D19A255DEE0A00B0B0BD /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558D199255DEE0A00B0B0BD /* PostCell.swift */; };
 		D558D19F255DEE1A00B0B0BD /* MZ_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558D19E255DEE1A00B0B0BD /* MZ_ViewController.swift */; };
-		D558D1AC255DEEA000B0B0BD /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558D1AB255DEEA000B0B0BD /* FeedViewController.swift */; };
 		D558D1B1255DEED100B0B0BD /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558D1B0255DEED100B0B0BD /* File.swift */; };
 		D558D1BC255DF06E00B0B0BD /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558D1BB255DF06E00B0B0BD /* Post.swift */; };
 		D558D1D0255DF14700B0B0BD /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558D1CF255DF14700B0B0BD /* UIView+extension.swift */; };
+		D5DF56A2255E279200F7EC8B /* MZ_TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DF56A1255E279200F7EC8B /* MZ_TabBarController.swift */; };
+		D5DF56B0255E4A9F00F7EC8B /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DF56AF255E4A9F00F7EC8B /* FeedViewController.swift */; };
+		D5DF56B5255E4AF500F7EC8B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DF56B4255E4AF500F7EC8B /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,10 +75,12 @@
 		D558D194255DEDF200B0B0BD /* NetworkHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHandler.swift; sourceTree = "<group>"; };
 		D558D199255DEE0A00B0B0BD /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		D558D19E255DEE1A00B0B0BD /* MZ_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZ_ViewController.swift; sourceTree = "<group>"; };
-		D558D1AB255DEEA000B0B0BD /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		D558D1B0255DEED100B0B0BD /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		D558D1BB255DF06E00B0B0BD /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		D558D1CF255DF14700B0B0BD /* UIView+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
+		D5DF56A1255E279200F7EC8B /* MZ_TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MZ_TabBarController.swift; sourceTree = "<group>"; };
+		D5DF56AF255E4A9F00F7EC8B /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		D5DF56B4255E4AF500F7EC8B /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		D5E39F8E63F1D9840E4CB47F /* Pods-forumTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-forumTests.debug.xcconfig"; path = "Target Support Files/Pods-forumTests/Pods-forumTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -163,6 +167,7 @@
 				D558D1A7255DEE8A00B0B0BD /* Feed Views */,
 				D558D1A3255DEE1F00B0B0BD /* Base View Classes */,
 				D558D1C3255DF0FE00B0B0BD /* Assets */,
+				D558D15A255DEA6D00B0B0BD /* Info.plist */,
 				D558D157255DEA6D00B0B0BD /* LaunchScreen.storyboard */,
 			);
 			path = forum;
@@ -190,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				D558D19E255DEE1A00B0B0BD /* MZ_ViewController.swift */,
+				D5DF56A1255E279200F7EC8B /* MZ_TabBarController.swift */,
 				D558D1B0255DEED100B0B0BD /* File.swift */,
 			);
 			path = "Base View Classes";
@@ -198,7 +204,7 @@
 		D558D1A7255DEE8A00B0B0BD /* Feed Views */ = {
 			isa = PBXGroup;
 			children = (
-				D558D1AB255DEEA000B0B0BD /* FeedViewController.swift */,
+				D5DF56AF255E4A9F00F7EC8B /* FeedViewController.swift */,
 				D558D199255DEE0A00B0B0BD /* PostCell.swift */,
 			);
 			path = "Feed Views";
@@ -208,7 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				D558D155255DEA6D00B0B0BD /* Assets.xcassets */,
-				D558D15A255DEA6D00B0B0BD /* Info.plist */,
 				D558D152255DEA6B00B0B0BD /* forum.xcdatamodeld */,
 			);
 			path = Assets;
@@ -228,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				D558D14D255DEA6B00B0B0BD /* LaunchViewController.swift */,
+				D5DF56B4255E4AF500F7EC8B /* LoginView.swift */,
 				D558D194255DEDF200B0B0BD /* NetworkHandler.swift */,
 				D558D1BB255DF06E00B0B0BD /* Post.swift */,
 			);
@@ -445,12 +451,14 @@
 			files = (
 				D558D19A255DEE0A00B0B0BD /* PostCell.swift in Sources */,
 				D558D1BC255DF06E00B0B0BD /* Post.swift in Sources */,
-				D558D1AC255DEEA000B0B0BD /* FeedViewController.swift in Sources */,
 				D558D14E255DEA6B00B0B0BD /* LaunchViewController.swift in Sources */,
 				D558D14A255DEA6B00B0B0BD /* AppDelegate.swift in Sources */,
 				D558D14C255DEA6B00B0B0BD /* SceneDelegate.swift in Sources */,
+				D5DF56B0255E4A9F00F7EC8B /* FeedViewController.swift in Sources */,
 				D558D1D0255DF14700B0B0BD /* UIView+extension.swift in Sources */,
 				D558D1B1255DEED100B0B0BD /* File.swift in Sources */,
+				D5DF56A2255E279200F7EC8B /* MZ_TabBarController.swift in Sources */,
+				D5DF56B5255E4AF500F7EC8B /* LoginView.swift in Sources */,
 				D558D190255DEDEA00B0B0BD /* LaunchHandler.swift in Sources */,
 				D558D154255DEA6B00B0B0BD /* forum.xcdatamodeld in Sources */,
 				D558D195255DEDF200B0B0BD /* NetworkHandler.swift in Sources */,

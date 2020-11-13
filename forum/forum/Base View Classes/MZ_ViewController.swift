@@ -8,8 +8,7 @@
 import Foundation
 import UIKit
 
-class MZ_ViewController:UIViewController {
-  
+class MZ_ViewController: UIViewController {
   
   
   

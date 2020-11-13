@@ -8,81 +8,45 @@
 import UIKit
 
 class LaunchViewController: MZ_ViewController {
-
-  let networkHandler = NetworkHandler()
-  let tableView = UITableView()
-  var posts = [Post]()
+ 
+  var windowView = UIView()
   
+  var segmentedControl:UISegmentedControl = {
+    var control = UISegmentedControl()
+    control.insertSegment(withTitle: "Sign Up", at: 0, animated: false)
+    control.insertSegment(withTitle: "Log In", at: 1, animated: false)
+    control.addAction(UIAction(handler: { (action) in
+      let control = action.sender as! UISegmentedControl.Segment
+      print(control)
+    }), for: .touchUpInside)
+    control.setEnabled(true, forSegmentAt: 0)
+    return control
+  }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.title = "posts"
-    
-    self.networkHandler.getPosts { (response) in
-      if case .success (let posts) = response {
-        DispatchQueue.main.async {
-          self.posts = posts
-          self.tableView.reloadData()
-        }
-      } else if case .failure (let error) = response {
-        print(error)
-      }
-    }
-    
     setupViews()
   }
-
+  
   func setupViews() {
-    self.view.backgroundColor = UIColor.white
+    view.addSubview(windowView)
     
-    let margins = self.view.layoutMarginsGuide
-    self.view.addSubview(tableView)
-    self.tableView.translatesAutoresizingMaskIntoConstraints = false
+    view.addSubview(segmentedControl)
+    segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+    segmentedControl.selectedSegmentIndex = 0
     
-    self.tableView.topAnchor.constraint(equalTo: margins.topAnchor, constant: 0.0).isActive = true
-    self.tableView.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: 0.0).isActive = true
-    self.tableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 0.0).isActive = true
-    self.tableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 0.0).isActive = true
-    
-    self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CellID")
-    self.tableView.delegate = self
-    self.tableView.dataSource = self
-  }
-  
-  
-
-}
-
-extension LaunchViewController:UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return self.posts.count
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "CellID", for: indexPath)
-    
-    cell.textLabel?.text = self.posts[indexPath.row].title
-    cell.detailTextLabel?.text = self.posts[indexPath.row].body
-    
-    cell.textLabel?.numberOfLines = 0
-    
-    return cell
-  }
-  
-  
-  
-  
-}
-
-extension LaunchViewController:UITableViewDelegate {
-  
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    print("row selected \(indexPath)")
-  }
-  
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 120
+    NSLayoutConstraint.activate([
+      
+      windowView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      windowView.bottomAnchor.constraint(equalTo: segmentedControl.safeAreaLayoutGuide.bottomAnchor),
+      windowView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+      windowView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+      
+      segmentedControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 40.0),
+      segmentedControl.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
+      segmentedControl.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20.0),
+    ])
   }
   
 }

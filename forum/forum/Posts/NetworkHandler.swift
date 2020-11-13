@@ -10,10 +10,7 @@ import Foundation
 
 class NetworkHandler {
   
-
-  
-  func getPosts(completion: @escaping (Result<[Post], Error>)->()) {
-    
+  func getPosts(completion: @escaping (Result<[Post], Error>) -> ()) {
     let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
     
     URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -21,9 +18,7 @@ class NetworkHandler {
         completion(.failure(error!))
         return
       }
-      
-      let decoder = JSONDecoder.init()
-      
+      let decoder = JSONDecoder()
       do {
         let posts = try decoder.decode([Post].self, from: safeData)
         completion(.success(posts))
@@ -31,10 +26,6 @@ class NetworkHandler {
         completion(.failure(error))
       }
     }.resume()
-    
-    
   }
-  
-  
-  
+
 }
