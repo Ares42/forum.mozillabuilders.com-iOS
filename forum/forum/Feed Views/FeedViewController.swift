@@ -24,16 +24,16 @@ class FeedViewController:UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.networkHandler.getPosts { [weak self] (response) in
-      if case .success (let posts) = response {
-        DispatchQueue.main.async {
-          self?.posts = posts
-          self?.tableView.reloadData()
-        }
-      } else if case .failure (let error) = response {
-        print(error)
-      }
-    }
+//    self.networkHandler.getPosts { [weak self] (response) in
+//      if case .success (let posts) = response {
+//        DispatchQueue.main.async {
+//          self?.posts = posts
+//          self?.tableView.reloadData()
+//        }
+//      } else if case .failure (let error) = response {
+//        print(error)
+//      }
+//    }
     
     setupViews()
   }

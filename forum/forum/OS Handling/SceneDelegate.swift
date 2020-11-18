@@ -21,9 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let window = UIWindow(windowScene: windowScene)
     
     // TODO: ask launch controller what VC to show
-    let tabBarController = MZ_TabBarController()
-    
-    window.rootViewController = tabBarController
+//    let tabBarController = MZ_TabBarController()
+    let LVC = LaunchViewController()
+    window.rootViewController = LVC
     window.makeKeyAndVisible()
     self.window = window
   }
