@@ -7,8 +7,15 @@
 
 import UIKit
 
+
 class LaunchViewController: MZ_ViewController {
- 
+  
+  lazy var mozillaLogoView:UIImageView = {
+    let imageView = UIImageView()
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    imageView.image = #imageLiteral(resourceName: "MozillaBuilders_Logo")
+    return imageView
+  }()
   
   lazy var scrollView:UIScrollView = {
     let scrollView = UIScrollView()
@@ -27,25 +34,19 @@ class LaunchViewController: MZ_ViewController {
     control.insertSegment(withTitle: "Sign Up", at: 0, animated: false)
     control.insertSegment(withTitle: "Log In", at: 1, animated: false)
     control.addTarget(self, action: #selector(handleSegmentedControlTapped), for: .valueChanged)
-    //    control.addAction(UIAction(handler: { (action) in
-    //      let control = action.sender as! UISegmentedControl.Segment
-    //      print(control)
-    //    }), for: .touchUpInside)
     control.setEnabled(true, forSegmentAt: 0)
     return control
   }()
   
   @objc func handleSegmentedControlTapped(sender: UISegmentedControl) {
-    
     switch sender.selectedSegmentIndex {
-    case 1:
+    case 0:
       handleTransitionToSignup()
-    case 2:
+    case 1:
       handleTransitionToLogin()
     default:
       print("error - segment out of bounds")
     }
-    
   }
   
   func handleTransitionToSignup() {
@@ -77,6 +78,8 @@ class LaunchViewController: MZ_ViewController {
   func setupViews() {
     view.addSubview(scrollView)
     
+    scrollView.addSubview(mozillaLogoView)
+    
     scrollView.addSubview(windowView)
     windowView.translatesAutoresizingMaskIntoConstraints = false
     
@@ -92,13 +95,16 @@ class LaunchViewController: MZ_ViewController {
       scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
       scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
       
-      windowView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 40),
-      windowView.bottomAnchor.constraint(equalTo: segmentedControl.topAnchor),
-      windowView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-      windowView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-      windowView.heightAnchor.constraint(equalToConstant: 200.0),
+      mozillaLogoView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+      mozillaLogoView.bottomAnchor.constraint(equalTo: windowView.topAnchor, constant: -20.0),
+      mozillaLogoView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+      mozillaLogoView.heightAnchor.constraint(equalToConstant: 24),
+      mozillaLogoView.widthAnchor.constraint(equalToConstant: 167),
+
+      windowView.bottomAnchor.constraint(equalTo: segmentedControl.topAnchor, constant: -40.0),
+      windowView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+      windowView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
       
-//      segmentedControl.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 40.0),
       segmentedControl.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
       segmentedControl.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20.0),
       segmentedControl.heightAnchor.constraint(equalToConstant: 40.0)

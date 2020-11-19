@@ -7,56 +7,67 @@
 
 import UIKit
 
+protocol AuthViewDelegate:class {
+  func continueButtonTapped()
+}
 
 class AuthView: UIView {
+  
+  weak var delegate:AuthViewDelegate?
   
   lazy var stackView:UIStackView = {
     var stack = UIStackView()
     
     stack.axis = .vertical
     stack.alignment = .leading
-    stack.distribution = .fillProportionally
-    stack.spacing = 4
+    stack.distribution = .equalSpacing
+    stack.spacing = 20
     
-    stack.addArrangedSubview(screenNameLabel)
-    stack.addArrangedSubview(screenNameTextField)
-    stack.addArrangedSubview(emailLabel)
-    stack.addArrangedSubview(emailTextField)
+    stack.addArrangedSubview(screenNameField)
+    stack.addArrangedSubview(emailField)
+    stack.addArrangedSubview(tempCodeField)
+    stack.addArrangedSubview(continueButton)
+    
     stack.translatesAutoresizingMaskIntoConstraints = false
 
     return stack
   }()
   
-  lazy var screenNameLabel:UILabel = {
-    var label = UILabel()
-    label.text = "Screen Name"
-    return label
+  lazy var emailField:LabeledFormField = {
+    let view = LabeledFormField()
+    view.configure(viewModel: LabeledFormViewModel(title: "Email", placeHolderText: "Enter your email address..."))
+    return view
   }()
   
-  lazy var screenNameTextField:UITextField = {
-    let textField = UITextField()
-    textField.placeholder = "How do you want to be known?"
-    return textField
+  lazy var screenNameField:LabeledFormField = {
+    let view = LabeledFormField()
+    view.configure(viewModel: LabeledFormViewModel(title: "Screen Name", placeHolderText: "How do you want to be known?"))
+    return view
   }()
   
-  lazy var emailLabel:UILabel = {
-    var label = UILabel()
-    label.text = "Email"
-    return label
-  }()
-
-  lazy var emailTextField:UITextField = {
-    let textField = UITextField()
-    textField.placeholder = "Enter your email address..."
-    return textField
+  lazy var tempCodeField:LabeledFormField = {
+    let view = LabeledFormField()
+    view.configure(viewModel: LabeledFormViewModel(title: "Temporary Code", placeHolderText: "Enter your temporary code here..."))
+    return view
   }()
   
   lazy var continueButton:UIButton = {
     let button = UIButton()
-    button.titleLabel?.text = "Enter your email address..."
+    button.layer.borderWidth = 1.0
+    button.layer.borderColor = UIColor.lightGray.cgColor
+    button.layer.cornerRadius = 4.0
+    
+    button.setTitle("Continue with email...", for: .normal)
+    button.setTitleColor(.black, for: .normal)
+    button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
     return button
   }()
   
+  lazy var tempCodeSentLabel:UILabel = {
+    let label = UILabel()
+    label.text = "We just sent you a temporary login code. /n Please check your inbox "
+    return label
+  }()
   
   
   // MARK: - Initialization
@@ -76,24 +87,56 @@ class AuthView: UIView {
 
   // MARK: - Setup
   func didLoad() {
+    
     self.addSubview(stackView)
     self.translatesAutoresizingMaskIntoConstraints = false
+    self.tempCodeField.isHidden = true
     
     NSLayoutConstraint.activate([
       stackView.topAnchor.constraint(equalTo: self.topAnchor),
       stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
       stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
       stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+      
+      emailField.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+      emailField.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+      
+      screenNameField.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+      screenNameField.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+
+      tempCodeField.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+      tempCodeField.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+      
+      continueButton.heightAnchor.constraint(equalToConstant: 45),
+      continueButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+      continueButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10)
     ])
-    //I actually create & place constraints in here, instead of in
-    //updateConstraints
   }
   
+  // MARK: - transitionhandling
+  
   func transitionToSignup() {
+    UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut) { [weak self] in
+      self?.screenNameField.isHidden = false
+    } completion: { [weak self] (bool) in
+      UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn) { [weak self] in
+        self?.screenNameField.alpha = 1.0
+      }
+    }
     
   }
   
   func transitionToLogin() {
+    UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseIn) { [weak self] in
+      self?.screenNameField.alpha = 0.0
+    } completion: { [weak self] (bool) in
+      UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseIn) { [weak self] in
+        self?.screenNameField.isHidden = true
+      }
+    }
+  }
+  
+  func transitionTempCodeSent() {
     
   }
   
