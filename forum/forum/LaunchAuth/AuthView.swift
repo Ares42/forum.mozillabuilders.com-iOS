@@ -35,19 +35,19 @@ class AuthView: UIView {
   
   lazy var emailField:LabeledFormField = {
     let view = LabeledFormField()
-    view.configure(viewModel: LabeledFormViewModel(title: "Email", placeHolderText: "Enter your email address..."))
+    view.configure(viewModel: LabeledFormViewModel(title: "Email", placeHolderText: "Enter your email address..."), isEmailField: true)
     return view
   }()
   
   lazy var screenNameField:LabeledFormField = {
     let view = LabeledFormField()
-    view.configure(viewModel: LabeledFormViewModel(title: "Screen Name", placeHolderText: "How do you want to be known?"))
+    view.configure(viewModel: LabeledFormViewModel(title: "Screen Name", placeHolderText: "How do you want to be known?"), isEmailField: false)
     return view
   }()
   
   lazy var tempCodeField:LabeledFormField = {
     let view = LabeledFormField()
-    view.configure(viewModel: LabeledFormViewModel(title: "Temporary Code", placeHolderText: "Enter your temporary code here..."))
+    view.configure(viewModel: LabeledFormViewModel(title: "Temporary Code", placeHolderText: "Enter your temporary code here..."), isEmailField: false)
     return view
   }()
   
@@ -123,7 +123,6 @@ class AuthView: UIView {
         self?.screenNameField.alpha = 1.0
       }
     }
-    
   }
   
   func transitionToLogin() {

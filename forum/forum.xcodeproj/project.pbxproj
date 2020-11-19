@@ -12,6 +12,7 @@
 		A0D32B1FFD170E0EFBF80356 /* Pods_forum_forumUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57399C22FCFF8D5A095BAD96 /* Pods_forum_forumUITests.framework */; };
 		D52CAB822566D3D400E36F71 /* LabeledFormField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CAB812566D3D400E36F71 /* LabeledFormField.swift */; };
 		D52CAB872566E37900E36F71 /* FormButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CAB862566E37900E36F71 /* FormButton.swift */; };
+		D52CAB8C2566F53A00E36F71 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D52CAB8B2566F53A00E36F71 /* AuthController.swift */; };
 		D558D14A255DEA6B00B0B0BD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558D149255DEA6B00B0B0BD /* AppDelegate.swift */; };
 		D558D14C255DEA6B00B0B0BD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558D14B255DEA6B00B0B0BD /* SceneDelegate.swift */; };
 		D558D14E255DEA6B00B0B0BD /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D558D14D255DEA6B00B0B0BD /* LaunchViewController.swift */; };
@@ -66,6 +67,7 @@
 		B9AAD6339FDB099533BC5370 /* Pods_forum.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_forum.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D52CAB812566D3D400E36F71 /* LabeledFormField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabeledFormField.swift; sourceTree = "<group>"; };
 		D52CAB862566E37900E36F71 /* FormButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormButton.swift; sourceTree = "<group>"; };
+		D52CAB8B2566F53A00E36F71 /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		D558D146255DEA6B00B0B0BD /* forum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = forum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D558D149255DEA6B00B0B0BD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D558D14B255DEA6B00B0B0BD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			children = (
 				D558D14D255DEA6B00B0B0BD /* LaunchViewController.swift */,
 				D5DF56B4255E4AF500F7EC8B /* AuthView.swift */,
+				D52CAB8B2566F53A00E36F71 /* AuthController.swift */,
 				D52CAB862566E37900E36F71 /* FormButton.swift */,
 				D52CAB812566D3D400E36F71 /* LabeledFormField.swift */,
 			);
@@ -491,6 +494,7 @@
 			files = (
 				D5D5E320256444BE0098550B /* ErrorModel.swift in Sources */,
 				D558D19A255DEE0A00B0B0BD /* PostCell.swift in Sources */,
+				D52CAB8C2566F53A00E36F71 /* AuthController.swift in Sources */,
 				D558D1BC255DF06E00B0B0BD /* Post.swift in Sources */,
 				D5D5E33E256445CC0098550B /* String+Extension.swift in Sources */,
 				D558D14E255DEA6B00B0B0BD /* LaunchViewController.swift in Sources */,

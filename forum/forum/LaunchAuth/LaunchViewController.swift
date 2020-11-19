@@ -114,8 +114,7 @@ class LaunchViewController: MZ_ViewController {
   func adjustInsetForKeyboardShow(_ show: Bool, notification: Notification) {
     guard
       let userInfo = notification.userInfo,
-      let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey]
-        as? NSValue
+      let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
       else {
         return
     }
